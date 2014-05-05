@@ -381,8 +381,10 @@ namespace log4net.Appender
 #if NET_4_0
         [System.Security.SecuritySafeCritical]
 #endif
+#if !UNITY_4_3
         [System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode = true)]
-        protected override void Append(LoggingEvent loggingEvent) 
+#endif
+		protected override void Append(LoggingEvent loggingEvent) 
 		{
 			int priority = GeneratePriority(m_facility, GetSeverity(loggingEvent.Level));
 			string message = RenderLoggingEvent(loggingEvent);

@@ -34,7 +34,11 @@ namespace log4net.Util
 	/// </remarks>
 	/// <author>Nicko Cadell</author>
 	/// <author>Gert Driesen</author>
+#if !UNITY_4_3
 	public sealed class Transform
+#else
+	public sealed class TransformLog4Net
+#endif
 	{
 		#region Private Instance Constructors
 
@@ -46,7 +50,11 @@ namespace log4net.Util
 		/// Uses a private access modifier to prevent instantiation of this class.
 		/// </para>
 		/// </remarks>
+#if !UNITY_4_3
 		private Transform()
+#else
+		private TransformLog4Net()
+#endif
 		{
 		}
 
@@ -135,7 +143,11 @@ namespace log4net.Util
 		/// </remarks>
 		public static string MaskXmlInvalidCharacters(string textData, string mask)
 		{
+#if !UNITY_4_3
 			return INVALIDCHARS.Replace(textData, mask);
+#else
+			return textData;
+#endif
 		}
 
 		#endregion XML String Methods
@@ -191,10 +203,12 @@ namespace log4net.Util
 		private const string CDATA_END	= "]]>";
 		private const string CDATA_UNESCAPABLE_TOKEN	= "]]";
 
+#if !UNITY_4_3
         /// <summary>
         /// Characters illegal in XML 1.0
         /// </summary>
 		private static Regex INVALIDCHARS=new Regex(@"[^\x09\x0A\x0D\x20-\uD7FF\uE000-\uFFFD]",RegexOptions.Compiled);
+#endif
 		#endregion Private Static Fields
 	}
 }

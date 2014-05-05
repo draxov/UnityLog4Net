@@ -225,7 +225,7 @@ namespace log4net.Util
 			{
 #if NETCF_1_0
 				return System.Threading.Thread.CurrentThread.GetHashCode();
-#elif NET_2_0 || NETCF_2_0 || MONO_2_0
+#elif NET_2_0 || NETCF_2_0 || MONO_2_0 || UNITY_4_3
 				return System.Threading.Thread.CurrentThread.ManagedThreadId;
 #else
 				return AppDomain.GetCurrentThreadId();
@@ -936,7 +936,7 @@ namespace log4net.Util
 		{
 			try
 			{
-#if NETCF
+#if NETCF || UNITY_4_3
 				// Configuration APIs are not suported under the Compact Framework
 #elif NET_2_0
 				return ConfigurationManager.AppSettings[key];
@@ -1015,7 +1015,7 @@ namespace log4net.Util
 		{
 #if NETCF_1_0
 			return new Hashtable(CaseInsensitiveHashCodeProvider.Default, CaseInsensitiveComparer.Default);
-#elif NETCF_2_0 || NET_2_0 || MONO_2_0
+#elif NETCF_2_0 || NET_2_0 || MONO_2_0 || UNITY_4_3
 			return new Hashtable(StringComparer.OrdinalIgnoreCase);
 #else
 			return System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable();

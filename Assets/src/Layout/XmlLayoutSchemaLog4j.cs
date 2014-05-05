@@ -188,7 +188,11 @@ method="run" file="Generator.java" line="94"/>
     
 			// Append the message text
 			writer.WriteStartElement("log4j:message");
+#if UNITY_4_3
+			TransformLog4Net.WriteEscapedXmlString(writer, loggingEvent.RenderedMessage,this.InvalidCharReplacement);
+#else
 			Transform.WriteEscapedXmlString(writer, loggingEvent.RenderedMessage,this.InvalidCharReplacement);
+#endif
 			writer.WriteEndElement();
 
 			object ndcObj = loggingEvent.LookupProperty("NDC");
@@ -200,7 +204,11 @@ method="run" file="Generator.java" line="94"/>
 				{
 					// Append the NDC text
 					writer.WriteStartElement("log4j:NDC");
+#if UNITY_4_3
+					TransformLog4Net.WriteEscapedXmlString(writer, valueStr,this.InvalidCharReplacement);
+#else
 					Transform.WriteEscapedXmlString(writer, valueStr,this.InvalidCharReplacement);
+#endif
 					writer.WriteEndElement();
 				}
 			}
@@ -229,7 +237,11 @@ method="run" file="Generator.java" line="94"/>
 			{
 				// Append the stack trace line
 				writer.WriteStartElement("log4j:throwable");
+#if UNITY_4_3
+				TransformLog4Net.WriteEscapedXmlString(writer, exceptionStr,this.InvalidCharReplacement);
+#else
 				Transform.WriteEscapedXmlString(writer, exceptionStr,this.InvalidCharReplacement);
+#endif
 				writer.WriteEndElement();
 			}
 

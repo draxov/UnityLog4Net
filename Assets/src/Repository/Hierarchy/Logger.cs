@@ -428,10 +428,12 @@ namespace log4net.Repository.Hierarchy
                     ForcedLog((callerStackBoundaryDeclaringType != null) ? callerStackBoundaryDeclaringType : declaringType, level, message, exception);
 				}
 			}
+#if !UNITY_4_3
 			catch (Exception ex)
 			{
 				log4net.Util.LogLog.Error(declaringType, "Exception while logging", ex);
 			}
+#endif
 #if !NET_2_0 && !MONO_2_0
 			catch
 			{
@@ -465,10 +467,12 @@ namespace log4net.Repository.Hierarchy
 					}
 				}
 			}
+#if !UNITY_4_3
 			catch (Exception ex)
 			{
 				log4net.Util.LogLog.Error(declaringType, "Exception while logging", ex);
 			}
+#endif
 #if !NET_2_0 && !MONO_2_0
 			catch
 			{
@@ -505,10 +509,12 @@ namespace log4net.Repository.Hierarchy
 					return level >= this.EffectiveLevel;
 				}
 			}
+#if !UNITY_4_3
 			catch (Exception ex)
 			{
 				log4net.Util.LogLog.Error(declaringType, "Exception while logging", ex);
 			}
+#endif
 #if !NET_2_0 && !MONO_2_0
 			catch
 			{

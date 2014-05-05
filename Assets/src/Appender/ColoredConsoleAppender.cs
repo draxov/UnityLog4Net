@@ -268,8 +268,10 @@ namespace log4net.Appender
 #if NET_4_0
         [System.Security.SecuritySafeCritical]
 #endif
+#if !UNITY_4_3
         [System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode = true)]
-        override protected void Append(log4net.Core.LoggingEvent loggingEvent) 
+#endif
+		override protected void Append(log4net.Core.LoggingEvent loggingEvent) 
 		{
 			if (m_consoleOutputWriter != null)
 			{
@@ -437,8 +439,10 @@ namespace log4net.Appender
 #if NET_4_0
         [System.Security.SecuritySafeCritical]
 #endif
+#if !UNITY_4_3
         [System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
-        public override void ActivateOptions()
+#endif
+		public override void ActivateOptions()
 		{
 			base.ActivateOptions();
 			m_levelMapping.ActivateOptions();

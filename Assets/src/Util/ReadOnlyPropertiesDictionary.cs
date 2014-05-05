@@ -205,7 +205,7 @@ namespace log4net.Util
 		/// </remarks>
 #if NET_4_0
         [System.Security.SecurityCritical]
-#else
+#elif !UNITY_4_3
 		[System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
 #endif
         public virtual void GetObjectData(SerializationInfo info, StreamingContext context)

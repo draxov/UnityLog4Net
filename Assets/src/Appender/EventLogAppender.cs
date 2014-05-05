@@ -22,7 +22,7 @@
 // .NET Compact Framework 1.0 has no support for EventLog
 #if !NETCF 
 // SSCLI 1.0 has no support for EventLog
-#if !SSCLI
+#if !SSCLI && !UNITY_4_3
 
 using System;
 using System.Diagnostics;

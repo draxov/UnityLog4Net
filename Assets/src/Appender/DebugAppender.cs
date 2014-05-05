@@ -18,7 +18,7 @@
 #endregion
 
 #define DEBUG
-
+#if !UNITY_4_3
 using log4net.Layout;
 using log4net.Core;
 
@@ -169,3 +169,4 @@ namespace log4net.Appender
 		#endregion Private Instance Fields
 	}
 }
+#endif

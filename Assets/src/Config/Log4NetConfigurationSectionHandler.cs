@@ -18,7 +18,7 @@
 #endregion
 
 // .NET Compact Framework 1.0 has no support for application .config files
-#if !NETCF
+#if !NETCF && !UNITY_4_3
 
 using System.Configuration;
 using System.Xml;

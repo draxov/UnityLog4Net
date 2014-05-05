@@ -317,10 +317,12 @@ namespace log4net.Appender
 						this.Append(loggingEvent);
 					}
 				}
+#if !UNITY_4_3
 				catch(Exception ex)
 				{
 					ErrorHandler.Error("Failed in DoAppend", ex);
 				}
+#endif
 #if !MONO && !NET_2_0
 				// on .NET 2.0 (and higher) and Mono (all profiles), 
 				// exceptions that do not derive from System.Exception will be
@@ -424,10 +426,12 @@ namespace log4net.Appender
 						this.Append((LoggingEvent[])filteredEvents.ToArray(typeof(LoggingEvent)));
 					}
 				}
+#if !UNITY_4_3
 				catch(Exception ex)
 				{
 					ErrorHandler.Error("Failed in Bulk DoAppend", ex);
 				}
+#endif
 #if !MONO && !NET_2_0
 				// on .NET 2.0 (and higher) and Mono (all profiles), 
 				// exceptions that do not derive from System.Exception will be

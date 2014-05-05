@@ -21,7 +21,7 @@
 //	http://msdn.microsoft.com/en-us/library/system.console.foregroundcolor.aspx
 // Disable for unsupported targets
 #if !NETCF 
-#if !SSCLI
+#if !SSCLI && !UNITY_4_3
 #if !CLI_1_0
 #if !MONO_1_0
 #if !NET_1_0

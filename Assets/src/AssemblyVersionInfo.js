@@ -29,21 +29,20 @@
 
 // JScript.NET doesn't handle files with only custom attributes very well, adding
 // an import functions as a workaround for this issue.
-import System.Reflection;
+//import System.Reflection;
+//[assembly: AssemblyVersion("1.2.13.0")]
+//[assembly: AssemblyInformationalVersionAttribute("1.2")]
 
-[assembly: AssemblyVersion("1.2.13.0")]
-[assembly: AssemblyInformationalVersionAttribute("1.2")]
-
-@if (!@NETCF)
-@if (!@SSCLI)
-[assembly: AssemblyFileVersion("1.2.13.0")]
-@end
-@end
+//@if (!@NETCF)
+//@if (!@SSCLI)
+//[assembly: AssemblyFileVersion("1.2.13.0")]
+//@end
+//@end
 
 //
 // Shared assembly settings
 //
 
-[assembly: AssemblyCompany("The Apache Software Foundation")]
-[assembly: AssemblyCopyright("Copyright 2004-2013 The Apache Software Foundation.")]
-[assembly: AssemblyTrademark("Apache and Apache log4net are trademarks of The Apache Software Foundation")]
+//[assembly: AssemblyCompany("The Apache Software Foundation")]
+//[assembly: AssemblyCopyright("Copyright 2004-2013 The Apache Software Foundation.")]
+//[assembly: AssemblyTrademark("Apache and Apache log4net are trademarks of The Apache Software Foundation")]
