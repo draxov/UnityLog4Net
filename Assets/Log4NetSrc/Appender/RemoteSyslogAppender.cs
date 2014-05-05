@@ -16,7 +16,7 @@
 // limitations under the License.
 //
 #endregion
-
+#if !UNITY_4_3
 using System;
 
 using log4net.Core;
@@ -590,3 +590,4 @@ namespace log4net.Appender
 		#endregion // LevelSeverity LevelMapping Entry
 	}
 }
+#endif

@@ -17,6 +17,7 @@
 //
 #endregion
 
+#if !UNITY_4_3
 using System;
 using System.Collections;
 using System.Globalization;
@@ -515,3 +516,4 @@ namespace log4net.Appender
 		#endregion
 	}
 }
+#endif

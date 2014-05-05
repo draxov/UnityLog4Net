@@ -263,10 +263,12 @@ namespace log4net.Util
 						// Lookup the host name
 						s_hostName = System.Net.Dns.GetHostName();
 					}
+#if !UNITY_4_3
 					catch (System.Net.Sockets.SocketException)
 					{
 						LogLog.Debug(declaringType, "Socket exception occurred while getting the dns hostname. Error Ignored.");
 					}
+#endif
 					catch (System.Security.SecurityException)
 					{
 						// We may get a security exception looking up the hostname

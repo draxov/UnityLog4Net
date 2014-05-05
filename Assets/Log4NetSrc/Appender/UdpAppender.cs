@@ -16,7 +16,7 @@
 // limitations under the License.
 //
 #endregion
-
+#if !UNITY_4_3
 using System;
 using System.Globalization;
 using System.Net;
@@ -541,3 +541,4 @@ namespace log4net.Appender
 		#endregion Private Instance Fields
 	}
 }
+#endif
