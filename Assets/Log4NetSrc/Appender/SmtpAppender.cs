@@ -19,13 +19,13 @@
 
 // .NET Compact Framework 1.0 has no support for System.Web.Mail
 // SSCLI 1.0 has no support for System.Web.Mail
-#if !NETCF && !SSCLI && !UNITY_4_3
+#if !NETCF && !SSCLI 
 
 using System;
 using System.IO;
 using System.Text;
 
-#if NET_2_0
+#if NET_2_0 || UNITY_4_3
 using System.Net.Mail;
 #else
 using System.Web.Mail;
@@ -324,7 +324,7 @@ namespace log4net.Appender
 			set { m_mailPriority = value; }
 		}
 
-#if NET_2_0
+#if NET_2_0 || UNITY_4_3
         /// <summary>
         /// Enable or disable use of SSL when sending e-mail message
         /// </summary>
@@ -444,7 +444,7 @@ namespace log4net.Appender
 		/// <param name="messageBody">the body text to include in the mail</param>
 		virtual protected void SendEmail(string messageBody)
 		{
-#if NET_2_0
+#if NET_2_0 || UNITY_4_3
 			// .NET 2.0 has a new API for SMTP email System.Net.Mail
 			// This API supports credentials and multiple hosts correctly.
 			// The old API is deprecated.
@@ -462,12 +462,20 @@ namespace log4net.Appender
 			if (m_authentication == SmtpAuthentication.Basic)
 			{
 				// Perform basic authentication
+#if UNITY_4_3
+				smtpClient.Credentials = (System.Net.ICredentialsByHost)new System.Net.NetworkCredential(m_username, m_password);
+#else
 				smtpClient.Credentials = new System.Net.NetworkCredential(m_username, m_password);
+#endif
 			}
 			else if (m_authentication == SmtpAuthentication.Ntlm)
 			{
 				// Perform integrated authentication (NTLM)
+#if UNITY_4_3
+				smtpClient.Credentials = (System.Net.ICredentialsByHost)System.Net.CredentialCache.DefaultNetworkCredentials;
+#else
 				smtpClient.Credentials = System.Net.CredentialCache.DefaultNetworkCredentials;
+#endif
 			}
 
             using (MailMessage mailMessage = new MailMessage())
@@ -604,7 +612,7 @@ namespace log4net.Appender
 
 		private MailPriority m_mailPriority = MailPriority.Normal;
 
-#if NET_2_0
+#if NET_2_0 || UNITY_4_3
         private bool m_enableSsl = false;
         private string m_replyTo;
 #endif

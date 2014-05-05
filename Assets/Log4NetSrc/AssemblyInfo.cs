@@ -30,7 +30,9 @@ using System.Runtime.CompilerServices;
 //
 // log4net is CLS compliant
 //
+#if !UNITY_4_3
 [assembly: System.CLSCompliant(true)]
+#endif
 
 #if (!NETCF)
 //
