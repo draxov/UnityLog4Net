@@ -1,0 +1,10 @@
+<log4net>
+	<!-- Define some output appenders -->	
+  <appender name="UnityAppender" type="log4net.Appender.UnityLogAppender" >
+  </appender>
+	<!-- Setup the root category, add the appenders and set the default priority -->
+	<root>
+		<level value="DEBUG" />
+		<appender-ref ref="UnityAppender" />
+	</root>
+</log4net>
